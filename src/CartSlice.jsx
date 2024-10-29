@@ -4,7 +4,9 @@ export const CartSlice = createSlice({
   name: 'cart',
   initialState: {
     items: [], // Initialize items as an empty array
+    totalQuantity: 0, // New state to track total quantity
   },
+
   reducers: {
     addItem: (state, action) => {
         const { name, image, cost } = action.payload;
@@ -15,6 +17,7 @@ export const CartSlice = createSlice({
         else {
         state.items.push({ name, image, cost, quantity: 1 });
         }
+        state.totalQuantity++; // Increment total quantity when adding an item
     },
     
     removeItem: (state, action) => {
